@@ -7,12 +7,15 @@ class CardPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Card Page"),
       ),
-      body: ListView(
-          children: <Widget>[_cardTipo1()], padding: EdgeInsets.all(15.0)),
+      body: ListView(children: <Widget>[
+        _cardTipo1(),
+        SizedBox(height: 30.0),
+        _cardTipo2(),
+      ], padding: EdgeInsets.all(15.0)),
     );
   }
 
-  _cardTipo1() => Card(
+  Widget _cardTipo1() => Card(
           child: Column(
         children: <Widget>[
           ListTile(
@@ -31,4 +34,12 @@ class CardPage extends StatelessWidget {
           ])
         ],
       ));
+
+  Widget _cardTipo2() => Card(
+    child: Column(children: <Widget>[
+      Image(
+        image: NetworkImage(
+          'https://mymodernmet.com/wp/wp-content/uploads/2020/02/international-landscape-photographer-of-the-year-thumbnail.jpg'))
+    ])
+  );
 }

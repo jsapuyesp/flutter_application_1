@@ -1,22 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/routes/routes.dart';
-import 'package:flutter_application_1/src/pages/-all_pages.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'package:componentes/src/routes/routes.dart';
+import 'package:componentes/src/pages/alert_page.dart';
+
+
+ 
 void main() => runApp(MyApp());
-
+ 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Componentes APP',
-      // home: HomePage()
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', 'US'), // English
+        const Locale('es', 'ES'),
+      ],
+      //  home: HomePage(),
       initialRoute: '/',
       routes: getApplicationRoutes(),
-      onGenerateRoute: (RouteSettings settings) {
+      onGenerateRoute: ( RouteSettings settings ){
+
+        print( 'Ruta llamda: ${ settings.name }' );
+
         return MaterialPageRoute(
-            builder: (BuildContext context) => AlertPage());
+          builder: ( BuildContext context ) => AlertPage()
+        );
+
+
       },
+      
     );
   }
 }
+
+
